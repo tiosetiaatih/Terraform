@@ -15,7 +15,7 @@ variable "boot_disk_type" {
   default = "pd-balanced"
 }
 variable "subnet" {
-  default = "subnet-rnd-01"
+  default = "your-subnetwork"
 }
 variable "private_ip" {
   default = "172.16.4.60"
