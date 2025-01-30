@@ -1,3 +1,3 @@
-project_id   = "core-services-rnd"
-subnet       = "subnet-rnd-01"
-private_ip   = "172.16.4.60"
+project_id   = "your_name_project"
+subnet       = "our_subnetwork"
+private_ip   = "your_priv_ip"

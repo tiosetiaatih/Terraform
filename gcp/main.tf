@@ -2,7 +2,7 @@ provider "google" {
   project      = var.project_id
   region       = var.region
   zone         = var.zone
-  credentials  = file("~/.config/gcloud/gcloud-core-services-rnd.json")
+  credentials  = file("~/.config/gcloud/your-service-account.json")
 }
 
 resource "google_compute_instance" "vm_instance" {

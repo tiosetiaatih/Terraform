@@ -40,22 +40,22 @@ terraform init
 ### Plan Terraform Changes
 ```bash
 terraform plan \
-  -var="project_id=core-services-rnd" \
-  -var="subnet=subnet-rnd-01" \
-  -var="private_ip=172.16.4.13"
+  -var="project_id=your_name_project" \
+  -var="subnet=your_subnetwork" \
+  -var="private_ip=your_priv_ip"
 ```
 
 ### Apply Terraform Changes
 ```bash
 terraform apply \
-  -var="project_id=core-services-rnd" \
-  -var="subnet=subnet-rnd-01" \
-  -var="private_ip=172.16.4.13"
+  -var="project_id=your_name_project" \
+  -var="subnet=your_subnetwork" \
+  -var="private_ip=your_priv_ip"
 ```
 
 ### Destroy Terraform Infrastructure
 ```bash
 terraform destroy \
-  -var="project_id=core-services-rnd" \
-  -var="subnet=subnet-rnd-01" \
-  -var="private_ip=172.16.4.13"
+  -var="project_id=your_name_project" \
+  -var="subnet=your_subnetwork" \
+  -var="private_ip=your_priv_ip"
