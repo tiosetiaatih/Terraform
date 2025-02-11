@@ -1,0 +1,4 @@
+gcp/.terraform/*
+gcp/.terraform.lock.hcl
+gcp/.terraform.tfstate
+gcp/.terraform.tfstate.backup
