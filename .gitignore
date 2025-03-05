@@ -2,3 +2,9 @@ gcp/.terraform/*
 gcp/.terraform.lock.hcl
 gcp/.terraform.tfstate
 gcp/.terraform.tfstate.backup
+gcp/.terraform.tfstate.lock.info
+huawei/.terraform/*
+huawei/.terraform.lock.hcl
+huawei/.terraform.tfstate
+huawei/.terraform.tfstate.backup
+huawei/.terraform.tfstate.lock.info

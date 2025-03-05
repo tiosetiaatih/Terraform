@@ -1,35 +1,55 @@
 # Configure the HUAWEI CLOUD provider.
 provider "huaweicloud" {
-  region     = "your-region"
-  access_key = "your-access-key"
-  secret_key = "your-secret-key"
-}
-
-# Create a VPC.
-resource "huaweicloud_vpc" "vpc" {
-  name = "terraform_vpc"
-  cidr = "192.168.0.0/16"
+  region     = "ap-southeast-4"
+  access_key = "access_key"
+  secret_key = "secret_key"
 }
 
 # Create a VM Instances
-resource "huaweicloud_compute_instance" "vm_instance" {
-  name              = "test-terraform"
-  image_id          = "477723dd-1464-4c3c-9c78-f18fca5b58a4" #Image ID Rocky Linux
-  flavor_id         = "s3.medium.1"
-  admin_pass        = "your-password-here"
-  security_groups   = ["default"]
-  availability_zone = "ap-southeast-4a"
+data "huaweicloud_availability_zones" "az1" {}
+
+data "huaweicloud_compute_flavors" "myflavor" {
+  availability_zone = data.huaweicloud_availability_zones.az1.names[0]
+  performance_type  = "normal"
+  cpu_core_count    = 1
+  memory_size       = 2
+}
+
+data "huaweicloud_vpc_subnet" "mynet" {
+  name = "mynet"
+}
+
+data "huaweicloud_images_image" "myimage" {
+  name        = "Rocky Linux 8.8 64bit"
+  most_recent = true
+}
+
+data "huaweicloud_networking_secgroup" "mysecgroup" {
+  name = "mysecgroup"
+}
+
+# Enterprise Project
+data "huaweicloud_enterprise_project" "myproject" {
+  name = "myproject"
+}
+
+resource "huaweicloud_compute_instance" "test-terraform" {
+  name               = "test-terraform"
+  image_id           = data.huaweicloud_images_image.myimage.id
+  flavor_id          = data.huaweicloud_compute_flavors.myflavor.ids[0]
+  availability_zone  = data.huaweicloud_availability_zones.az1.names[0]
+  security_group_ids = [data.huaweicloud_networking_secgroup.mysecgroup.id]
+  admin_pass         = "123#password"
+  system_disk_type   = "SAS"
+  system_disk_size   = 50
 
   network {
-    uuid = "your-id-network"
+    uuid = data.huaweicloud_vpc_subnet.mynet.id
   }
-
-  system_disk_type = "SAS"
-  system_disk_size = 20
 
   tags = {
-    environment = "development"
-    os          = "rocky-linux"
-    iaac        = "terraform"
+    tags = "tags"
   }
+
+  enterprise_project_id = data.huaweicloud_enterprise_project.myproject.id
 }
