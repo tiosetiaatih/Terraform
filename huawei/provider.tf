@@ -4,8 +4,8 @@ terraform {
     key         = "terraform.tfstate"
     region      = "ap-southeast-4"
     endpoint    = "https://obs.ap-southeast-4.myhuaweicloud.com"
-    access_key  = "SAXBLVVQD6XIRS6UKG93"
-    secret_key  = "1HKMRh9v85ssMib47xRUaHyaJPKYlA8T9w1Yqdlj"
+    access_key  = "access_key"
+    secret_key  = "secret_key"
     
     # bypass AWS-specific checks
     skip_region_validation      = true
